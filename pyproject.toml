@@ -1,0 +1,9 @@
+[project]
+name = "eventgenie-ai"
+version = "1.0.0"
+description = "EventGenie AI - Your Celebration, Perfectly Planned"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[tool.vercel]
+entrypoint = "api/index.py"

@@ -14,7 +14,7 @@ from typing import Dict, Any, Tuple
 # Add backend directory to sys.path
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(BACKEND_DIR)
-FRONTEND_DIR = os.path.join(PROJECT_ROOT, "frontend")
+FRONTEND_DIR = os.path.join(PROJECT_ROOT, "public") if os.path.exists(os.path.join(PROJECT_ROOT, "public")) else os.path.join(PROJECT_ROOT, "frontend")
 if BACKEND_DIR not in sys.path:
     sys.path.insert(0, BACKEND_DIR)
 
@@ -67,7 +67,7 @@ class EventGenieHandler(SimpleHTTPRequestHandler):
         path = parsed.path
         
         # API Routes
-        if path == "/api/health":
+        if path == "/api/health" or path == "/api/health/":
             self._send_json_response({
                 "status": "healthy",
                 "app": "EventGenie AI",
@@ -79,15 +79,15 @@ class EventGenieHandler(SimpleHTTPRequestHandler):
             })
             return
             
-        if path == "/api/demo":
+        if path == "/api/demo" or path == "/api/demo/":
             self._send_json_response(CAMPUS_CARNIVAL_2026)
             return
             
-        if path == "/api/presets":
+        if path == "/api/presets" or path == "/api/presets/":
             self._send_json_response(PRESET_TEMPLATES)
             return
 
-        if path == "/api/plans":
+        if path == "/api/plans" or path == "/api/plans/":
             plans = database.list_events()
             self._send_json_response({"plans": plans})
             return

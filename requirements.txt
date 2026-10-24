@@ -1,0 +1,2 @@
+# EventGenie AI uses standard library modules (http.server, sqlite3, urllib, json)
+# No external pip dependencies required for runtime
