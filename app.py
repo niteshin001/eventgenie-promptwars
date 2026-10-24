@@ -2,7 +2,7 @@
 """
 EventGenie AI - App Entrypoint
 """
-from server import handler, app, run_server
+from main import app, handler, run_server
 
 if __name__ == "__main__":
     import os
